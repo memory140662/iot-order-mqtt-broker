@@ -1,0 +1,6 @@
+.idea/
+*.iml
+target/
+.env
+ec2keypair.pem
+cht-iot-b0dd1-firebase-adminsdk-ipoak-25cb4bba56.json

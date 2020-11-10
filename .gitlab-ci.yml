@@ -1,0 +1,27 @@
+stages:
+  - test
+  - deploy
+
+
+cache:
+  paths:
+    - .m2/respoitory
+
+測試-DEV:
+  stage: test
+  image: maven:latest
+  script:
+    - mvn test
+  only:
+    refs:
+      - develop
+
+
+發布-DEV:
+  stage: deploy
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=cht-iot-mqtt-broker-dev --api-key=$HEROKU_STAGING_API_KEY
+  only:
+    refs:
+      - develop
